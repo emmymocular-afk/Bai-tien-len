@@ -1,0 +1,17 @@
+{
+  "variant": "Southern Tiến Lên",
+  "ranks": ["3","4","5","6","7","8","9","10","J","Q","K","A","2"],
+  "suits": ["C","D","H","S"],
+  "suit_order": {"C": 0, "D": 1, "H": 2, "S": 3},
+  "combinations": ["single", "pair", "triple", "straight", "pair_sequence", "four_of_a_kind"],
+  "straight_min_length": 3,
+  "pair_sequence_min_pairs": 2,
+  "require_same_suit_for_straight": false,
+  "bombs": {
+    "four_of_a_kind": {
+      "description": "Four-of-a-kind (tứ quý) is a bomb and can beat a single 2.",
+      "can_beat_2": true
+    }
+  },
+  "notes": "This rules.json encodes a common Southern Tiến Lên configuration. Adjust fields to match house rules (e.g., same-suit straights or additional bombs)."
+}
