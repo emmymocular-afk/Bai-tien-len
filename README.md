@@ -2,6 +2,33 @@
 
 This README contains both English and Vietnamese translations so readers can choose the language they prefer.
 
+Table of Contents / Mục lục
+- English (How to play) / Tiếng Anh
+  - Overview
+  - Card ranking
+  - Setup
+  - Legal plays (combinations)
+  - Turn order and table play
+  - Special rules and variations
+  - Scoring
+  - Example quick-play
+  - Tips for beginners
+  - Example: short play-by-play hand
+  - Machine-readable rules (rules.json)
+  - CLI: usage and examples
+- Tiếng Việt (Hướng dẫn chơi)
+  - Tổng quan
+  - Thứ tự lá bài
+  - Chuẩn bị
+  - Các nước đánh hợp lệ
+  - Thứ tự lượt và cách chơi
+  - Luật đặc biệt và các biến thể
+  - Tính điểm
+  - Ví dụ chơi nhanh
+  - Mẹo cho người mới
+  - Ví dụ minh hoạ từng bước
+  - rules.json và cli.py
+
 ---
 
 ## English (How to play)
@@ -82,16 +109,33 @@ This example demonstrates passing, beating with higher singles, and the winner o
 ### Machine-readable rules (rules.json)
 A simple rules.json is included in this repository so web apps or bots can implement the same basic rule set. It lists rank order, combination types, suit order, and basic bomb rules. See rules.json for the exact structure used.
 
-### Included files
-- README.md — this bilingual file (English + Vietnamese)
-- README.vi.md — Vietnamese translation (same content)
-- rules.json — machine-readable rule set used by the sample CLI
-- cli.py — small Python CLI to validate plays and simulate a quick trick winner
+### CLI: usage and examples
+A small Python CLI (cli.py) is included as a reference validator and demo.
 
-### Variants and further reading
-Because Tiến Lên has many local rule sets (Southern Tiến Lên, Northern variations, Big Two-style rules), this README gives a practical, common rule set but not an exhaustive rule book. If you'd like the README and rules.json tweaked for a particular local variant, tell me which one (Southern / Northern / Big Two) and I'll update all files accordingly.
+Requirements:
+- Python 3.8+
 
-Enjoy playing! If you'd like any of the example files (rules.json, cli.py) adjusted — for example to enforce same-suit straights or different bomb rules — I can update them to match your house rules.
+Run the demo:
+
+    python3 cli.py
+
+This will print a few example comparisons (singles, straights, bombs). You can import detect_combination() and beats() from cli.py in your own code to validate plays.
+
+Example output (abridged):
+
+    Rules variant: Southern Tiến Lên
+    Example: compare single plays
+    Play A: ['3C'] Play B: ['4D'] Play C: ['2D']
+    Does B beat A? True
+    Does C beat B? True
+
+    Example: four-of-a-kind bomb beating a single 2
+    Bomb: ['9C', '9D', '9H', '9S'] Two: ['2D']
+    Bomb beats two? True
+
+Modify rules.json to change behavior
+- Edit rules.json fields (require_same_suit_for_straight, bombs.four_of_a_kind.can_beat_2, suit_order, straight_min_length, etc.).
+- cli.py reads rules.json at runtime, so changes are applied without editing the script.
 
 ---
 
@@ -170,16 +214,23 @@ Dưới đây là ví dụ minh họa với 4 người để cho thấy cách c�
 
 Ví dụ này nhằm minh hoạ cơ bản các khái niệm: bỏ lượt, chặn bằng lá lớn hơn, và người thắng ván dẫn lượt tiếp theo.
 
-### rules.json (máy đọc được)
-Một file rules.json đơn giản được thêm vào kho để các ứng dụng web hoặc bot có thể sử dụng cùng bộ luật cơ bản này. File liệt kê thứ tự, các loại tổ hợp, thứ tự chất và luật bomb cơ bản. Xem rules.json để biết cấu trúc chi tiết.
+### rules.json và cli.py
+Một file rules.json đơn giản được thêm vào kho để các ứng dụng web hoặc bot có thể sử dụng cùng bộ luật cơ bản này. File liệt kê thứ tự, các loại tổ hợp, thứ tự chất và luật bomb cơ bản. cli.py là một script Python nhỏ dùng để kiểm tra tổ hợp và so sánh nước bài.
 
-### Các file kèm theo
-- README.md — file song ngữ này (Tiếng Anh + Tiếng Việt)
-- README.vi.md — bản dịch tiếng Việt (nội dung trùng nhau)
-- rules.json — cấu hình luật theo định dạng máy (dùng cho CLI)
-- cli.py — script Python nhỏ để kiểm tra nước bài và mô phỏng vài ví dụ
+---
 
-### Biến thể và tham khảo thêm
-Tiến Lên có nhiều biến thể (Tiến Lên miền Nam, miền Bắc, hoặc luật kiểu Big Two quốc tế). README này trình bày tập luật chung của miền Nam để dễ tiếp cận — nếu bạn muốn, tôi có thể điều chỉnh README và rules.json theo một biến thể cụ thể.
+## Contributing / Góp ý
+Contributions are welcome. If you want to improve the rules, add variants, or extend the CLI:
+- Fork the repository
+- Edit or add tests/examples
+- Open a pull request describing your changes
 
-Chúc bạn chơi vui! Nếu muốn tôi có thể cập nhật file dịch, thêm ví dụ chi tiết hơn, hoặc viết phiên bản tương tác cho cli.py.
+Mọi đóng góp đều hoan nghênh. Nếu bạn muốn mở rộng bộ luật, thêm biến thể, hoặc nâng cấp CLI:
+- Fork kho này
+- Sửa hoặc thêm test/vd
+- Tạo pull request và mô tả các thay đổi của bạn
+
+## License
+This project does not include a license by default. If you plan to reuse or distribute the code, add a LICENSE file (e.g., MIT or CC0) so others know how they may use it.
+
+Dự án hiện chưa có license. Nếu bạn định tái sử dụng hoặc phân phối, hãy thêm file LICENSE (ví dụ MIT hoặc CC0) để người khác biết cách sử dụng.
