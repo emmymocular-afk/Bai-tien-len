@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@layer utilities {
+  @keyframes scaleIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.85);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fallAnimation {
+    0% {
+      transform: translateY(-10vh) rotate(0deg);
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(105vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes throwProjectileAnim {
+    0% {
+      transform: translate(0, 0) scale(0.6) rotate(0deg);
+      opacity: 1;
+    }
+    70% {
+      transform: translate(calc(var(--target-x) * 0.7), calc(var(--target-y) * 0.7 - 60px)) scale(1.3) rotate(180deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(var(--target-x), var(--target-y)) scale(1.6) rotate(360deg);
+      opacity: 0.9;
+    }
+  }
+
+  @keyframes shakeCardSlamAnim {
+    0% {
+      transform: scale(1.18) translateY(-15px);
+      opacity: 0.85;
+    }
+    40% {
+      transform: scale(0.96) translateY(2px);
+      opacity: 1;
+    }
+    70% {
+      transform: scale(1.03) translateY(-1px);
+    }
+    100% {
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  @keyframes freezeGlitterAnim {
+    0%, 100% {
+      opacity: 0.6;
+      filter: drop-shadow(0 0 4px #38bdf8);
+    }
+    50% {
+      opacity: 0.95;
+      filter: drop-shadow(0 0 12px #93c5fd);
+    }
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.22s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.2s ease-out forwards;
+  }
+
+  .animate-fall {
+    animation: fallAnimation 3s linear forwards;
+  }
+
+  .animate-throw-projectile {
+    animation: throwProjectileAnim 0.65s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  }
+
+  .animate-card-slam {
+    animation: shakeCardSlamAnim 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+
+  .animate-freeze-glitter {
+    animation: freezeGlitterAnim 1.5s ease-in-out infinite;
+  }
+}
+
+/* Custom scrollbar for mobile hand and rosters */
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(245, 158, 11, 0.4);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(245, 158, 11, 0.7);
+}
+
+/* Prevent unwanted callouts and user text selection during rapid card taps on iOS/Android */
+body {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  background-color: #020617;
+}

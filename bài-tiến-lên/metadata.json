@@ -1,0 +1,6 @@
+{
+  "name": "Bài tiến lên",
+  "description": "Game Bài Tiến Lên Miền Nam chuẩn luật với đồ họa phong cách Unity sang trọng, dàn AI thông minh Nhân, Nghĩa, Lễ, Trí, Tín, Phúc, Lộc, Thọ, Tài, Lợi và Chủ phòng.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
